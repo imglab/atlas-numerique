@@ -264,15 +264,15 @@ function showq5 (dq5){
 
 Promise.all([
     d3.text('../../scripts/boudonSzambien/q1.js'),
-    d3.json('../../data/boudonSzambien/q1.json'),
+    d3.json('../../data-public/boudonSzambien/q1.json'),
     d3.text('../../scripts/boudonSzambien/q2.sql'),
     d3.text('../../scripts/boudonSzambien/q2.js'),
-    d3.json('../../data/boudonSzambien/q2.json'),
+    d3.json('../../data-public/boudonSzambien/q2.json'),
     d3.text('../../scripts/boudonSzambien/q3.js'),
-    d3.json('../../data/boudonSzambien/q3.json'),
+    d3.json('../../data-public/boudonSzambien/q3.json'),
     d3.text('../../scripts/boudonSzambien/q4.sql'),
-    d3.json('../../data/boudonSzambien/q4.json'),
-    d3.json('../../data/boudonSzambien/q5.json')
+    d3.json('../../data-public/boudonSzambien/q4.json'),
+    d3.json('../../data-public/boudonSzambien/q5.json')
     
 ]).then(([sq1, dq1, sql2, sq2, dq2, sq3, dq3, sql4, dq4, dq5]) => {
     showq1(sq1, dq1);
