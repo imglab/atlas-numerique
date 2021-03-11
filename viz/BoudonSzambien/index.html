@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Rapport Boudon Szambien 1990</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div id="intro">
+    <h1> Le potentiel de CONBAVIL</h1>
+    <h3>Questions soulevées dans le rapport Boudon Szambien 1990</h3>
+    <div class="external">
+      <p>Grâce au dépouillement analytique et à la création d'une base de données "On pourra établir à volonté en quelques minutes la liste :</p>
+          <ol>
+              <li><a href="#q1">dépôts de mendicité créés par Napoléon</a></li>
+              <li><a href="#q2">églises transformées en école dans le département de la Nièvre entre 1802 et 1810</a></li>
+              <li><a href="#q3">rapports confiés à Chalgrin dès son retour "au pouvoir" sous le Directoire</a></li>
+              <li><a href="#q4">le nombre et la nature des chantiers dirigés par l'architecte Boissonnade en Aveyron dans les années 1830</a></li>
+              <li><a href="#q5">le pourcentage des dossiers de construction et de réparation présentés au conseil pendant dix ans</a></li>
+              <li><a href="#q6">le pourcentage de ceux qu'il rejette et ceux qu'il adopte</a></li>
+              <li><a href="#q7">l'activité de Rondelet comme auteur de projets et comme rapporteur de dossiers</a></h3> 
+          </ol>
+      <p>etc..." (Szambien et Boudon, 1990: 10)</p>
+      <p><i>Boudon, Françoise, et Werner Szambien. 1990. « Les rapports présentés au Conseil des Bâtiments Civils, 1795-1845. Constitution d’une base de données ». Research Report 676/90. Ministère de l’équipement, du logement, des transports et de la mer / Bureau de la recherche architecturale (BRA) ; Université de Paris IV / Centre de recherche sur l’histoire de l’architecture moderne. https://hal.archives-ouvertes.fr/hal-01909887.</i></p>
+    </div>
+    <p>Travail effectué par Lena Krause dans le cadre de son mémoire de maîtrise...</p>
+  </div>
+<!--q1: dépôts mendicité + Napoléon-->
+<!-- faire une recherche avec les dépôts de mendicité : ils devraient être sous l'empire probablement-->
+  <div id="q1">
+      <h3>Les dépôts de mendicité créés par Napoléon</h3>
+      <p>test effectué dans l'interface de l'INHA: dénomination = "dépôt de mendicité" + rapport contient "Napoléon".</p>
+      <img src="./img/1-depotmendicite.png" height="120">
+      <img src="./img/1-napoleon.png" height="120">
+      <img src="./img/1-listeresultats.png" height="350">
+      
+      <ul>
+        <li><a href="https://www.inha.fr/conbavil/notice.php?pv=15152" target="_blank">Couvent des Dames Blanches</a>, 1810, La Rochelle: "Entrepreneur responsable pendant 10 ans selon code Napoléon".</li>
+        <li><a href="https://www.inha.fr/conbavil/notice.php?pv=5724" target="_blank">Maison de force</a>, 1811, Limoges: "En réf. à l'art. 661 et 675 du Code Napoléon, on s'abstiendra de pratiquer aucun jour sur ce mur mitoyen."</li>
+        <li><a href="https://www.inha.fr/conbavil/notice.php?pv=2502" target="_blank">Dépôt de mendicité</a>, 1815, Mouzon: "faire constater les malfaçons (notamment écroulement de murs neufs) par deux hommes de l'art adjoints à Dubois, en présence de deux entrepreneurs (application des art.1792 et 2270 du Code Napoléon)."</li>
+      </ul>
+      <p>Nous faisons face au problème suivant: comment définir qu'un édifice est "commandé par Napoléon"? Les résultats sont des fiches qui font référence au code Napoléon (qui est disponible en ligne sur <a href="https://gallica.bnf.fr/ark:/12148/bpt6k1061517" target="_blank">Gallica</a>, nous sommes donc allée chercher les références au code).</p>
+      <img src="./img/1-codeNapoleon-article661.png" height="150">
+      <img src="./img/1-codeNapoleon-article675.png" height="150">
+      <img src="./img/1-codeNapoleon-article1792.png" height="100">
+      <img src="./img/1-codeNapoleon-article2270.png" height="110">
+    <h4>Quelles autres options?</h4>
+    <p>Ne pas chercher dans le rapport mais dans les personnes mentionnées. Champs:</p>
+    <ul>
+      <li>TEXTO: "NCI - nom cité"</li>
+      <li>FileMaker: "nom"</li> <!--insert screenshot?-->
+      <li>XML</li>
+      <textarea class="small">
+        <mentions>
+          <mention type="person">
+            <persName>Napoléon Ier</persName>
+          </mention>
+        </mentions></textarea>
+      <li>JSON</li>
+      <textarea class="small">"mentionPerson": "Napoléon Ier"</textarea>
+    </ul>
+    <p>N'y parvenant pas avec l'interface actuelle, nous avons écrit un script qui filtre la base de données pour nous croiser les résultats des "dépôts de mendicité" avec les mentions de "Napoléon 1er". Nous avons constaté qu'il n'existe aucun dépôt de mendicité dont la délibération fait mention de Napoléon. Nous avons donc écrit un code pour afficher les 30 délibérations qui font mention de Napoléon.</p>
+    <!--scripts/BoudonSzambien/q1.js: importé dans index.js-->
+    <textarea id="scriptq1" class="code"></textarea>
+    <h5>Résultats obtenus</h5>
+    <!--data/bd-tests/q1.json: importé et formatté pour le web dans index.js-->
+    <div id="delibq1" class="resultats"></div>
+    <p>Ce sont majoritairement des édifices et monuments commémoratifs. Si ce micro-corpus inspire bien des questions (la chronologie mériterait par exemple un approfondissement), nous n'avons pas su résoudre la question de recherche initial. Nous pouvons exclure les corrélations entre "Napoléon" et les dépôts de mendicités. Il reste alors à savoir s'il faudrait plutôt chercher du côté d'une loi ou directive de Napoléon, ou encore trouver une méthode pour étudier les 262 délibérations à propos de dépôts de mendicités.</p>
+  </div>
+
+  <div class="return"><a href="#intro">^ retour ^</a></div>
+<!--q2: église transformées en école, Nièvre, 1802-1810-->
+  <div id="q2"> 
+    <h3>Les églises transformées en école dans le département de la Nièvre entre 1802 et 1810</h3>
+    <p>Pour répondre à cette question, nous travaillons avec deux types d'édifice "église" et "école", en ajoutant un type d'intervention nommé "nouvelle affectation", entre 1802 et 1810 dans le département de Nièvre. Le choix du type d'édifice ne devrait pas affecter le résultat, car en cas d'attribution multiple, les deux (ou plus) types architecturaux devraient être renseignés.</p>
+    <p>Cette question est typique à résoudre dans le contexte d'une base de données, que l'on interroge au moyen du langage SQL. N'ayant pas accès à la base de données dans son format original, la proposition ci-jointe est une approximation de la requête à effectuer, basée sur la <a href="../Structure/index.html" target="_blank">documentation</a> que nous avons réunie.</p> 
+    <textarea id="sqlq2" class="code"></textarea>
+    <p>Dans l'interface de l'INHA, nous pouvons sélectionner un seul type d'édifice à la fois, et il n'est pas possible de définir une fourchette pour les dates des rapports.</p>
+    <img src="./img/2-eglise-NA-nievre.png" height="350px">
+    <img src="./img/2-date.png" height="75px">
+    <p>Pour mettre en pratique la question, nous avons écrit un script qui teste le nombre de délibérations durant la période concernée, dans le département de Nièvre, de type école ou église, et identifiée comme une nouvelle affectation.</p>
+    <textarea id="scriptq2" class="code"></textarea>
+    <p>Ce type de requête, typique pour une base de données car on croise plsieurs critères, est parfois trop précis. À l'image de la recherche d'une aiguille dans une botte de foin, si l'on n'a pas d'hypothèses préalable, il est probable de n'obtenir aucun résultat.</p>
+    <h5>Résultats obtenus</h5>
+    <!--contenu copié du résultat du script tel qu'imprimé dans la console-->
+    <textarea class="medium">
+      délibérations entre 1802 et 1810: 2538
+      délibérations concernant Nièvre: 149
+      églises: 2319
+      écoles: 191
+      nouvelles affectations1964
+      écoles dans Nièvre: 20
+      églises dans Nièvre: 0
+      nouvelles affectations dans Nièvre: 11
+      tout combiné: 0
+    </textarea>
+    <p>Il n'existe aucune délibération qui réponde à tous les criètres définis dans la question de recherche. Nous pouvons toutefois nous intéresser aux 11 nouvelles affectations dans le Nièvre.</p>
+    <!--data/bd-tests/q2.json: importé et formatté pour le web dans index.js-->
+    <div id="delibq2" class="resultats"></div>
+    <p>Nous pouvons voir dans les délibérations que les affaires concernant une nouvelle affectation sont identifiées avec les anciens et nouveaux types d'édifice. La prépondérance de l’architecture religieuse s’explique quant à elle par le grand nombre de réaffectations de bâtiments nationaux en écoles, préfectures et tribunaux, notamment (Woolf, 1987: 30-31).</p>
+    <p>Cette question de recherche avait problement pour but de donner un exemple pour démonter des riches possibilités de croiser les requêtes. Pour obtenir un résultat, et donc un corpus, dit "pertinent", il faut cependant faire plusieurs essais (et erreurs - non pas erreur mais plutôt apprentissage, rôle informatif utile et nécessaire). Nous pensons que cela fonctionnerait très bien pour des chercheur·se·s spécialisé·e·s qui arriveraient pour consulter la base de données avec des intérêts déterminés, il·elle·s pourraient ainsi éliminer ou creuser des pistes grâce à cette "vérification".</p>
+  </div> 
+<!-- nécessité de faire plusieurs requête est un argument pour faire une interface heuristique-->
+
+  <div class="return"><a href="#intro">^ retour ^</a></div>
+<!--#3: rapports Chalgrin après [date?]-->
+<!--Membre de l’Assemblée des architectes du 24 nivôse an IV (14 janvier 1796) au 1er prairial an VI (20 mai 1798) . Membre du Conseil des bâtiments civils du 1er vendémiaire an VII (22 septembre 1798) à sa mort (20 janvier 1811) -->
+  <div id="q3">
+    <h3>Les rapports confiés à Chalgrin dès son retour "au pouvoir" sous le Directoire</h3>
+    <p>D'emblée, nous pouvons rechercher les rapports confiés à Chalgrin.</p>
+    <img src="./img/3-Chalgrin.png" height="80px">
+    <img src="./img/3-102resultats.png" height="320px">
+    <p>Il nous faut toutefois définir la date qui correspond à son retour au pouvoir sous le Directoire pour répondre à la question. Nous avons cependant choisi de commencer par la voie exploratoire, c'est-à-dire de suivre les pistes présentes dans les données, avant d'identifier la date en consultant la littérature existantes et les spécialistes (en l'occurence, Emmanuel Château-Dutier).</p>
+    <p>Nous avons donc commencé par écrire un script qui identifie les délibérations où Chalgrin est identifié comme auteur du rapport.</p>
+    <textarea id="scriptq3" class="code"></textarea>
+    <p>Étrangement, nous arrivons à un résultat de 104 délibérations (pour 102 dans l'interface de l'INHA). Nous ne savons pas expliquer cette différence (ortho-typo?).</p>
+    <div id="delibq3" class="resultats"></div>
+    <p>Nous pouvons étudier ces résultats en les regroupant par année: </p>
+    <textarea class="medium">
+      1796: 43
+      1797: 21
+      1798: 3
+      1799: 4
+      1800: 1
+      1802: 1
+      1805: 1
+      1806: 1
+      1807: 4
+      1808: 4
+      1809: 5
+      1810: 16
+    </textarea>
+    <textarea class="medium">
+      1796 = seul: 42 , à deux: 1, plusieurs: 0, TOTAL: 43
+      1797 = seul: 15 , à deux: 6, plusieurs: 0, TOTAL: 21
+      1798 = seul: 1 , à deux: 1, plusieurs: 1, TOTAL: 3
+      1799 = seul: 0 , à deux: 1, plusieurs: 3, TOTAL: 4
+      1800 = seul: 0 , à deux: 0, plusieurs: 1, TOTAL: 1
+      1802 = seul: 1 , à deux: 0, plusieurs: 0, TOTAL: 1
+      1805 = seul: 0 , à deux: 0, plusieurs: 1, TOTAL: 1
+      1806 = seul: 0 , à deux: 0, plusieurs: 1, TOTAL: 1
+      1807 = seul: 1 , à deux: 0, plusieurs: 3, TOTAL: 4
+      1808 = seul: 0 , à deux: 0, plusieurs: 4, TOTAL: 4
+      1809 = seul: 0 , à deux: 1, plusieurs: 4, TOTAL: 5
+      1810 = seul: 2 , à deux: 0, plusieurs: 14, TOTAL: 16
+    </textarea>
+    <p>Nous pouvons ici identifier que Chalgrin était très actif - 43 rapports, dont 42 en son nom - en 1796, et qu'il a également 21 rapports donc 15 en son nom et 6 rapports cosignés en 1797. Dès 1798, il n'est plus très actif en tant que rapporteur (on pourrait toujours vérifier ce qui en est dans les mentions, voir si la tendance s'inverse par exemple). En 1810, il est impliqué dans 14 rapports cosignés à plusieurs. Les délibérations où un grand nombre de rapporteurs (ou de lieux, ou d'affaires) sont généralement des affaires administratives.</p>
+    <p>De ces observations, nous pensons que la question de recherche (son retour au pouvoir sous le directoire), concerne les années 1796 et 1797. À suivre.</p>
+  </div>
+
+  <div class="return"><a href="#intro">^ retour ^</a></div>
+<!--#4: nombre et nature des chantiers de Boissondade, Averyon, 1830-1840-->
+  <div id="q4">
+    <h3>Le nombre et la nature des chantiers dirigés par l'architecte Boissonnade en Aveyron dans les années 1830</h3>
+    <p>Identifier les délibérations en Aveyron dont Boissonnade est l'architecte semble plutôt évident. Nous nous attarderons à la question du nombre et de la nature dans un second temps.</p>
+    <p>Il est à nouveau relativement aisé de répondre à la première partie de la question par une requête SQL:</p>
+    <textarea id="sqlq4" class="small"></textarea>
+    <p>Ce qui est surprenant, c'est qu'il aurait dû être aisé de faire une requête de base (délibérations en Aveyron avec Boissonnade comme architecte) dans l'interface de l'INHA. Nous n'avons toutefois pas obtenu de résultat (problème dans la requête?).</p>
+    <img src="./img/4-boissonnade-aveyron.png" height="200px">
+    <img src="./img/4-listevide.png" height="60px">
+    <p>Il existe pourtant plusieurs délibérations en Averyon où Boissonnade est identifié comme architecte: </p>
+    <textarea class="small">
+      Boissonnade architecte en Aveyron: 11
+      Boissonnade autre (ingé) en Aveyron: 13
+      Boissonnade architecte ailleurs: 0
+      Boissonnade autre (ingé) ailleurs: 9
+    </textarea>
+    <div class="return"><a href="../../scripts/boudonSzambien/q4.js" target="_blank">voir le script</a></div>
+    <p>Pendant les vérifications de notre script (notamment par un simple ctrl+f dans le fichier "conbavil.json"), nous avons découvert Boissonnade écrit "Boissonade" (nous avons probablement découvert l'erreur en la faisant nous-même). Également identifié comme architecte, nous pensons qu'il s'agit de la même personne et donc d'une erreur typographique. Sous cette orthographe, nous avons trouvé trois résultats dans l'interface de l'INHA: </p>
+    <img src="./img/4-boissonade.png" height="200px">
+    <img src="./img/4-liste3.png" height="350px">
+    <p>Nous pouvons donc ajuster notre script pour vérifier les délibérations avec les deux orthographes (ce qui ajoute 5 occurences, 3 comme architecte en Aveyron et deux comme intervenant (non-architecte) ailleurs).</p>
+    <textarea class="small">
+      Boissonnade architecte en Aveyron: 14
+      Boissonnade (ingé ou autre) en Aveyron: 13
+      Boissonnade architecte ailleurs: 0
+      Boissonnade (ingé ou autre) ailleurs: 11
+    </textarea>
+    <p>Durant les tests de notre script, nous avons également trouvé des délibérations où Boissonnade n'était pas la seule personne mentionnée. Cela est dû à la structure du logiciel TEXTO. Les bases de données telles qu'employées aujourd'hui sont généralement composée de plusieurs tables. Chaque table modélise un élément de l'univers représenté. Dans CONBAVIL, il y aurait notamment des délibérations (ou fiche), des personnes, des lieux etc. On pourrait même modéliser les pages des archives. On relie ensuite les tables via une "table de liens": si une fiche fait mention de l'architecte Boissonnade, dans la table des liens entre les fiches et les personnes, on trouvera l'identifiant de la fiche, et l'identifiant de Boissonnade<!--à réviser ^^ et probablement à modéliser pour être claire-->. Toutefois, il y a 30 ans, les possibilités n'étaient pas les mêmes. TEXTO était un logiciel pour des bases de données dites "à plat", qui contiennent une seule table. On était donc limité à plusieurs niveaux: </p>
+      <ul>
+        <li>Sans pouvoir faire plusieurs tables, on devait donc défnir une liste de champs qui s'applique à l'emsemble de la base de données. Cela force une application stricte de la grille pré-déterminée. Plus encore, on ne peut pas faire de liens entre les personnes et les fiches (comme dans l'exemple mentionné précédemment). On a donc été obligé de créer un nombre fixe de champs pour les personnes mentionnées. Si la plupart des fiches n'ont aucune ou une, voire deux, mention(s), certaines en ont bien plus. De ce problème découle un utilisation "détournée": la grille permettant la mention de trois personnes, s'il y en avait plus, on les a "comprimés" dans le troisième champs pesonne, en séparant les noms par des point-virgules. </li>
+        <li>L'autre inconvénient qui découle du système avec une seule table, c'est ce qu'on appelle un problème de redondance: il faut entrer le nom de la personne à chaque mention, puisqu'on ne peut pas simplement référer à son identifiant. De ce problème découle l'erreur typographique, car l'erreur est humaine, et il est vite arrivé de se tromper d'orthographe. Le problème aurait pu être "géré" s'il y avait une interface qui assiste l'entrée des données, qui suggèrerait des choses qui ont été entrées avant, afin de sélectionner le bon terme plutôt que de le réécrire. Cependant, cela ne règle pas le problème de redondance: comme on entre plusieurs fois le nom "Boissonnade", s'il advient de devoir changer son nom (ex: on découvre dans des archives que son nom s'écrit en fait "Boissonade"), alors il faut changer l'orthographe partout, ce qui est dur à vérifier. S'il y avait un identifiant qui décrit l'entité "Boissonnade" comme architecte, il suffirait de la trouver de la corriger et toutes les références à cette fiche le seraient également puisqu'elles pointent vers cette entité. </li>
+        <li>Autre limitation de TEXTO: max 4000 charactères. On ne peut donc pas toujours entrer tout ce que l'on voudrait ("condensation" des rapports et avis)</li>
+      </ul>
+    <p>Nous avons dû garder en tête cette ancienne structure pour identifier les mentions de l'architecte Boissonnade. En effet, il ne suffit pas de chercher les personnes dont le nom est Boissonnade: <code>persName == "Boissonnade"</code>. Il faut également chercher les noms qui contiennent Boissonnade : <code>persName.includes("Boissonnade")</code>. Prenant aussi en compte l'erreur typographique, il faut accepter, dans les deux cas, les orthographes "Boissonnade" et "Boissonade".</p>
+<<<<<<< HEAD
+    <!-- références, à compléter-->
+=======
+    <!-- références, à complétern-->
+>>>>>>> test
+    <p>**Personne(s) identifiée(s)** (https://www.inha.fr/conbavil/notice.php?pv=8661)
+
+      Boissonnade, Jean Joseph (1744-03-17 - 1818-03-30)
+      **Commentaires :** F14/2173/2, chemise Boissonnade, pièces 1-61 né à Saint-Geniez d'Olt (Aveyron). 1761, cours de dessin et de maths. à Avignon, 1765, ingénieur des T. P.  du Gévaudan ; 1790, ingénieur en chef de la Lozère (doc. 3) ; une note  du préfet, 02-1807 : 'le rapport de Boissonnade pour 1806 est pitoyable, confus, embrouillé, peu français, vague, incomplet, sans orthographe'  (doc. 4 et 5) ; retraite : 1811 (doc. 23)
+      **Sources :** Arch. nat. F14/2173/2
+      
+       
+      
+      **Personne(s) identifiée(s)** (https://www.inha.fr/conbavil/notice.php?pv=19407)
+      
+      Boissonnade, Etienne Joseph (1796 - 1862)
+      **Commentaires :**  D'après le 'Répertoire.." architecte du département de l'Aveyron à  partir de 1821 ; chargé des édifices diocésains de Rodez à partir de  1823. 
+      **Sources :** R. Taussat, 'Etienne Boissonnade, 1796-1862, un Haussmann aveyronnais', 'Etudes aveyronnaises', 1996, p. 159-172. Répertoire des architectes diocésains du XIXe siècle.</p>
+    <p>Il s'agit maintenant de trouver <b>le nombre et la nature</b> de ces interventions. Au-delà d'une liste comme réponse, on entre dans une véritable logique quantitative. Cela est possible avec des requêtes SQL un peu plus complexes. Cependant, afin de pousuivre par la pratique, nous allons plutôt étendre notre script. Nous interprétons le terme "nature" des inteventions comme équivalent du champs "type d'intervention".</p>
+    <h5>Résultats obtenus</h5>
+    <div id="delibq4" class="resultats"></div>
+    <p>S'il nous apparaissait simple de répondre à cette question, nous avons ici fait face à plusieurs défis dus à la structure de la base de données. Avec un peu de travail de "nettoyage" des données, il est cependant possible d'avoir une réponse relativement représentative (il se peut que nous ayions manqué d'autres erreurs typographique par exemple).</p>
+  </div>
+  <div class="return"><a href="#intro">^ retour ^</a></div>
+
+<!--#5: % dossiers de construction/réparation sur 10 ans-->
+  <div id="q5">
+    <h3>Le pourcentage des dossiers de construction et de réparation présentés au conseil pendant dix ans</h3>
+    <p>Cette question, avec l'indication des pourcentage, demande clairement une approche quantitative. Cela est possible en SQL, cependant, c'est un type de requête plus complexe qui demande des connaissances avancées. Dans l'interface de l'INHA, on ferait face à plusieurs difficultés:</p>
+    <ul>
+      <li>toute requête a pour réponse une liste. Certes, le nombre de résultats apparaît en première ligne, mais le reste de l'information est brièvement indiqué dans la liste. Si elle n'est pas indiquée (le type d'intervention de l'est pas), il faut alors ouvrir un résultat après l'autre pour en savoir plus.</li>
+      <li>Pour faire une comparaison, il faudrait ouvrir deux fenêtres, faire les deux requêtes en parallèle puis aller et venir entre les fenêtres pour effectuer la comparaison.</li>
+      <li>on ne peut pas choisir un intervalle de temps</li>
+    </ul>
+    <p>Si l'approche quantitative était visée dès la création de la base de données, l'interface actuelle ne la facilite pas (elle permet la consultation du contenu, par fiche "individuelle").</p>
+      <!--en quoi on ne peut pas faire ça avec l'interface (pourcentage, intervalle). En quoi on pourrait le faire en sql-->
+    <p>Puisque notre travail consiste justement à revoir l'utilisation de la base de données en créant des visualisations, nous allons le faire pour cette question. Commençons par chercher des visualisations qui pourrait bien répondre à cette question. On classifierait les affaires en trois catégories: construction, réparation et autre pour tout le reste. Si le "camembert" ou <i>pie chart</i> s'y applique car un pourcentage représente la partie d'un tout, cela vaut la peine d'explorer les possibilités offertes par d3.js. La page <a href="https://observablehq.com/search?query=pie%20chart" target="_blank">Observablehq</a> déborde d'exemples dont le code est visibile et donc réutilisable. En voici quelque-uns documentés par Mike Bostock, créateur de la librairie D3.js: </p>
+    <div id="observablehq-a7cdc4c9" class="external"></div>
+    <script type="module">
+      import {Runtime, Inspector} from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+      import define from "https://api.observablehq.com/@d3/gallery.js?v=3";
+      const inspect = Inspector.into("#observablehq-a7cdc4c9");
+      (new Runtime).module(define, name => name === "radial" ? inspect() : undefined);
+    </script>
+    <a href="https://observablehq.com/@d3/gallery#radial" target="_blank" class="return">Lien vers la source</a>
+    <p>Il est bon de commencer par savoir "où on s'en va", pour préparer les données dans le format requis par la visualisation. Il faut également penser aux façon de regouper les délibérations: on veut des tranches de 10ans. Puisque nous créons des visualistions interactives, nous pouvons laisser le choix des années étudiées à l'utilisateur·rice. Dans ce cas, nous devons: </p>
+    <ol>
+      <b>Données</b></br>
+      <li>créer un index par année des affaires</li>
+      <li>dans cet index, il faut compter les affaires selon la classification: construction / réparation / autre</li>
+      <b>Interface</b></br>
+      <li>créer un <i>slider</i> pour la sélection de l'intervalle temporelle. </li>
+      <li>lier les données au graphique et s'assurer qu'il se met à jour en fonction de l'intervalle choisi</li>
+      <li>coder interactivité, ex.: si sélection d'un élément du graphique, afficher les délibérations.</li>
+    </ol>
+    <div>
+      <div id="slider"></div>
+      <p id="slidervalue"></p>
+    </div>
+    <div id="demoq5"></div>
+    <p>Grâce à l'interactivité, nous pouvons voir les tendances évoluer à travers le temps. Nous observons notamment qu'il y a plus de réparations que de constructions au début de la période étudiée (1795-1805: 5% construction, 12% réparation <!--à coder pour afficher dans le graphique directement-->), et que cette tendance s'inverse (1810-1820: 17% construction pour 12% de réparation, puis 1830-1840: 23% de construction pour 4% de réparation)</p>
+    <p>Il serait probablement intéressant de savoir ce qui se range dans "autre", d'autantplus que les constructions et réparations ne représentent que 17% des interventions entre 1795 et 1840, ce qui nous permet de faire l'hypothèse que d'autres interventions étaient primaires (en fait, nous savons qu'il y a beaucoup de nouvelles affectations.</p>
+    <!--faire la même chose pour tous les genres?-->
+    <div id="demo2q5"></div>
+  </div>
+
+  <div class="return"><a href="#intro">^ retour ^</a></div>
+<!--#6: %adoption/rejet-->
+  <div id="q6">
+    <h3>Le pourcentage de ceux qu'il rejette et ceux qu'il adopte </h3>
+  </div>
+
+  <div class="return"><a href="#intro">^ retour ^</a></div>
+<!--#7:-->
+  <div id="q7">
+  
+    <h3>L'activité de Rondelet comme auteur de projets et comme rapporteur de dossiers</h3> 
+  </div>
+  
+  <div class="return"><a href="#intro">^ retour ^</a></div>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://unpkg.com/d3-simple-slider"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
