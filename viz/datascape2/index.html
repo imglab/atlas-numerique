@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Datascape CONBAVIL</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <h1>Datascape de CONBAVIL</h1>
+  <div>
+    <form id="form">
+      <label>Afficher la partie </label> 
+      <input type="radio" name="partie" value="0" checked="checked"> 1
+      <input type="radio" name="partie" value="1"> 2 
+      <input type="radio" name="partie" value="2"> 3 
+      <input type="radio" name="partie" value="3"> 4 
+      <input type="radio" name="partie" value="4"> 5 
+      <input type="submit" value="Go">
+      <p> (patience, ce sont vraiment beaucoup de données...)</p>
+    </form>
+  </div>
+  <svg width="800" height="55000" id="datascape"></svg>
+  <div id="legend"></div>
+  <div id="textview"></div>
+
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://d3js.org/d3-shape.v1.min.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
