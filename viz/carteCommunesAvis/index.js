@@ -273,7 +273,7 @@ console.time('projectiontime');
 Promise.all([
   d3.json('../../data/geoCommunesConbavil.json'),
   d3.json('../../data/geoCommunesConbavil-E.json'),
-  d3.json('../../data/geo/france-dpt-proj.geojson'),
+  d3.json('../../data/france-dpt-proj.geojson'),
   d3.json('../../data/conbavil.json')
 ]).then(([json, jsonE, geojson, data]) => {
   var geo = json.concat(jsonE)
