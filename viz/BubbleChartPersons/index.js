@@ -99,7 +99,7 @@ function chart(root) {
 
 
 Promise.all([
-    d3.json('../../data/rolesEtPersonnes.json')
+    d3.json('../../data-public/rolesEtPersonnes.json')
   ]).then(([json]) => {
     chart(json);
   }).catch(function(error) {
