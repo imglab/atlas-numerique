@@ -124,7 +124,7 @@ console.time('json');
 console.time('projection');
 
 Promise.all([
-  d3.json('../../data/france-dpt-proj.geojson'),
+  d3.json('../../data/departements-version-simplifiee.geojson'),
   d3.json('../../data/conbavil.json')
 ]).then(([geojson, data]) => {
   data.forEach(delib => {
