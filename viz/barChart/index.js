@@ -1,6 +1,6 @@
 
 const svg = d3.select("#barChart"),
-    margin = {top: 20, right: 20, bottom: 80, left: 40},
+    margin = {top: 10, right: 20, bottom: 20, left: 40},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 //should enable deselect when clic on background but didn't work
@@ -110,6 +110,7 @@ function barChart(index){
   
     container.append("g")
         .attr("class", "y axis")
+        .style("font-family", "Dosis")
         .call(d3.axisLeft(y))
     
     console.log("y axis")
@@ -118,14 +119,10 @@ function barChart(index){
         .attr("y", -27)
         .attr("transform", "rotate(-90)")
         .style("text-anchor", "end")
+        .style("font-family", "Dosis")
+        .style("font-size", "12px")
         .text("Nombre de délibérations");
   
-    container.append("text")
-        .attr("x", width/2)
-        .style("text-anchor", "middle")
-        .attr("font-weight", "bold")
-        .attr("font-size", "20px")
-        .text("Séances du Conseil des bâtiments civils");
     
     console.log("axis titles")
 

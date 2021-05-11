@@ -1,0 +1,21 @@
+body{
+    width: 1024px;
+}
+
+h1, h2, h3, h4, h5, h6, p, button{
+    font-family: "Dosis";
+}
+
+h1 {
+    text-align: center;
+    font-size: 13px;
+}
+
+button {
+    margin-left: 10px;
+}
+
+svg{
+    display: block;
+    margin: auto;
+}

@@ -15,7 +15,7 @@ var subset;
 var delibData;
 
 var margin = {top: 20, right: 30, bottom: 30, left: 10},
-  width = 850 - margin.left - margin.right,
+  width = 1024 - margin.left - margin.right,
   height = 700 - margin.top - margin.bottom;
 
 const svg = d3.select("#carte")
@@ -94,6 +94,7 @@ function handleClickC (circles) {
           <p>${delib.buildingType}</p>
           <p>${delib.projectGenre}</p>
           <p>${delib.advice}</p>
+          <br>
         </div>`
       ).join("\n")}`
     textView.html(text(subset))

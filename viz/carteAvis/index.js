@@ -15,7 +15,7 @@ var subset;
 var delibData;
 
 var margin = {top: 20, right: 30, bottom: 30, left: 10},
-  width = 850 - margin.left - margin.right,
+  width = 1024 - margin.left - margin.right,
   height = 700 - margin.top - margin.bottom;
 
 const svg = d3.select("#carte")
