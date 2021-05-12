@@ -14,13 +14,12 @@ var conbavil;
 var subset;
 var delibData;
 
-var margin = {top: 20, right: 30, bottom: 30, left: 10},
-  width = 1024 - margin.left - margin.right,
-  height = 700 - margin.top - margin.bottom;
 
 const svg = d3.select("#carte")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
+
+var margin = {top: 10, right: 10, bottom: 10, left: 10},
+  width = svg.attr("width") - margin.left - margin.right,
+  height = svg.attr("height") - margin.top - margin.bottom;
 
 const rect = svg.append('rect')
   .attr("width", width + margin.left + margin.right)
@@ -122,6 +121,9 @@ function handleClickC (circles) {
 function map(json, geojson, data){
   console.timeEnd('json');
   conbavil = data;
+
+  console.log(width);
+  console.log(height)
 
   proj.center([2.454071, 46.279229]) // Center on France
     .scale(1000)
